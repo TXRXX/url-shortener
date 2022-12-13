@@ -36,8 +36,8 @@ app.post("/", async (req, res, next) => {
         const UrlExists = await ShortUrl.findOne({ url });
         if (UrlExists) {
             res.render("index", {
-                // ShortUrl: `http://localhost:7200/${UrlExists.shortId}`,
-                ShortUrl: `${req.hostname}/${UrlExists.shortId}`,
+                // short_url: `http://localhost:7200/${UrlExists.shortId}`,
+                short_url: `${req.hostname}/${UrlExists.shortId}`,
             });
             return;
         }
