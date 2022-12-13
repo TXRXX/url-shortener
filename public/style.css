@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;700&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Kanit', sans-serif;
+    font-family: "Kanit", sans-serif;
 }
 
 body {
@@ -59,7 +59,7 @@ h1 {
     border-radius: 10px;
     color: white;
     background-color: #88d275;
-    transition: .3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 
@@ -96,7 +96,8 @@ h1 {
     color: rgb(255, 107, 107);
 }
 
-a:link, a:visited{
+a:link,
+a:visited {
     color: rgb(89, 143, 172);
 }
 
@@ -107,13 +108,13 @@ a:link, a:visited{
     position: absolute;
     border: 0;
     background-color: transparent;
-    opacity: .4;
-    transition: .5s;
+    opacity: 0.4;
+    transition: 0.5s;
     cursor: pointer;
 }
 
 .copy-btn:hover {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 .clip-img {
@@ -134,6 +135,32 @@ a:link, a:visited{
     border-radius: 5px;
 }
 
-.tooltip.active .tooltiptext {
-    visibility:visible;
-  }
+@media screen and (max-width: 414px) {
+    .url__input {
+        width: 200px;
+    }
+    .wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .url__button {
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .url__input {
+        width: 200px;
+    }
+    .wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .url__button {
+        font-weight: 300;
+    }
+}
