@@ -4,23 +4,66 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+        <title>LINK SHORTENER | TXRXX</title>
     </head>
     <body>
-        <h1>url</h1>
-        <% if (locals.error) { %>
-        <p class="error"><%= error %></p>
-        <% } %>
+        <div class="wrapper">
+            <h1>URL Shortener</h1>
 
-        <form action="/" method="post">
-            <input type="url" name="url" id="url" />
-            <input type="submit" value="create url" />
-        </form>
+            <form action="/" method="post">
+                <input
+                    type="url"
+                    name="url"
+                    id="url"
+                    placeholder="FULL URL"
+                    class="url__input"
+                />
+                <input type="submit" value="SHRINK" class="url__button" />
+            </form>
 
-        <div class="short-url">
             <% if (locals.short_url) { %>
-            <a href="<%= short_url %>" target="_blank"><%= short_url %> </a>
+            <div class="short-url">
+                <a href="<%= short_url %>" target="_blank" id="shorted"
+                    ><%= short_url %>
+                </a>
+                <button class="copy-btn" id="copy-btn">
+                    <img src="/copy.png" alt="" class="clip-img" />
+                </button>
+                <div class="tooltip" id="tooltip">Copied</div>
+                <% } %> <% if (locals.error) { %>
+                <p class="error"><%= error %></p>
+            </div>
             <% } %>
         </div>
     </body>
+
+    <script>
+        document.getElementById("copy-btn").addEventListener("click", copykub);
+        var tt = document.getElementById("tooltip");
+        tt.style.visibility = "hidden";
+        function copykub() {
+            var copyText = document.getElementById("shorted");
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            tt.style.visibility = "visible";
+            console.log("Copied");
+            setTimeout(function () {
+                tt.style.visibility = "hidden";
+            }, 1000);
+        }
+
+        var tooltip = document.querySelector(".tooltip");
+        tooltip.addEventListener("click", function () {
+            if (this.classList.contains("active")) {
+                this.classList.remove("active");
+            } else {
+                this.classList.add("active");
+            }
+        });
+    </script>
 </html>
